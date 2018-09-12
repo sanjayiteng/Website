@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewBag.Title = "Checkout";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Checkout</h2>
+
+<fieldset>
+
+    <legend> </legend>
+    @using (Html.BeginForm("SaveOrder", "ShoppingCart", FormMethod.Post))
+    {
+        <table cellpadding="2" cellspacing="2" class="">
+            <tr><td><h5>Customer Information</h5></td></tr> 
+            <tr>
+                <td>Customer Address:</td>
+                <td><input type="text" name="customerAddress" class="form-control input-sm" /></td>
+            </tr>
+            <tr><td><h5>Please make your payment</h5></td></tr>
+            <tr><td><h5>Pay Via a Credit Card</h5></td></tr>
+            <tr>
+                <td>Card Number:</td>
+                <td><input type="text" name="cardNumber" id="cardNumber" maxlength="16" class="form-control input-sm" /></td>
+            </tr>
+            <tr>
+                <td>Type:</td>
+                <td>
+                    <select name="cardType" class="form-control dropdown">
+                        <option value="visa">Visa</option>
+                        <option value="mastercard">Master Card</option>
+                        <option value="discover">Discover</option>
+                        <option value="amex">Amex</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Expires:</td>
+                <td><input type="text" class="input-sm" name="expMonth" id="expMonth" placeholder="MM" style="width:45px;"/></td><td> &nbsp;<input class="input-sm"  type="text" name="expYear" id="expYear" placeholder="YY" style="width:90px;"/></td>
+            </tr>
+            <tr><td>Name on card</td></tr>
+            <tr>
+                <td>First Name:</td>
+                <td><input class="form-control input-sm" type="text" name="nameOnCardFirstName" id="nameOnCardFirstName" /></td>
+                <td>Last Name:</td>
+                <td><input class="form-control input-sm" type="text" name="nameOnCardLastName" id="nameOnCardLastName" /></td>
+            </tr>
+            <tr>
+                <td>CVV:</td>
+                <td><input class="form-control input-sm" type="text" name="CVV" id="CVV" /></td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td><input class="btn btn-default" type="submit" value="Pay" /></td>
+            </tr>
+        </table>
+
+
+    }
+</fieldset>
+

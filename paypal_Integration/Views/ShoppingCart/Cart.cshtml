@@ -1,0 +1,53 @@
+﻿@using PayPalIntegration.Models;
+@{
+    ViewBag.Title = "Cart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Cart</h2>
+<html>
+
+<body>
+    @using (Html.BeginForm("Update", "ShoppingCart", FormMethod.Post))
+    {
+        <table cellpadding="2" cellspacing="2" border="1" class="table">
+           <tr>
+<th>Option</th>
+               <th>Id</th>
+               <th>Name</th>
+               <th>Price</th>
+               <th>Quantity
+               <input type="submit" value="Update"/></th>
+               <th>Sub Total</th>
+    </tr>
+            @{ 
+                decimal s = 0;
+                int index = 1;
+                
+                }
+            @foreach(Item item in (List<Item>)Session["cart"])
+            {
+                s = s + item.pr.Price * item.Quantity;
+                <tr>
+                    <td>@Html.ActionLink("Delete","Delete","ShoppingCart",new { id=item.pr.ProductId},null)</td>
+                    <td>@item.pr.ProductId</td>
+                    <td>@item.pr.ProductName</td>
+                    <td>@item.pr.Price</td>
+                    <td><input type="text" name="quantity" class="input-sm" value="@item.Quantity" /></td>
+                    <td>@(item.pr.Price* item.Quantity)
+                    @*@(index++)*@
+                    </td>
+
+                </tr>
+            }
+            <tr >
+                <td align="right" colspan="5">Sum</td>
+                <td>@s</td>
+            </tr>
+        </table>
+    }
+    <br />
+    @Html.ActionLink("Continue Shoping", "Index", "Product")|
+    @Html.ActionLink("Checkout", "Checkout", "ShoppingCart")
+</body>
+</html>

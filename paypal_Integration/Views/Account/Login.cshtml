@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Login</h2>
+
+<div>
+    @*@Html.BeginForm("login","account",FormMethod.Post)
+    {*@
+    
+        <div class="form-group">
+            <label for="uname"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" id="UserName" name="UserName" class="form-control input-sm" required>
+
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" id="Password" name="Password" class="form-control input-sm" required>
+
+            <button type="submit">Login</button>
+            <label>
+                <input type="checkbox" checked="checked" name="remember"> Remember me
+            </label>
+        </div>
+
+        <div class="container" style="background-color:#f1f1f1">
+            <button type="submit" class="btn btn-default cancelbtn">Cancel</button>
+        </div>
+    @*//}*@
+   
+
+</div>
+
+<script>
+
+    @*$.ajax({
+
+        type: 'post'
+        url: "@Url.Action("Login","Action")",
+        data: { 'UserName': $('#UserName').val(), 'Password': $('#Password').val() },
+        success: function (data) { },
+        error: function () { }
+    })*@
+</script>

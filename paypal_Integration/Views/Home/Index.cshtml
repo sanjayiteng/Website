@@ -1,0 +1,71 @@
+﻿@model PayPalIntegration.Models.ItemModel
+
+@{
+    ViewBag.Title = "Home Page";
+}
+@using (Html.BeginForm("PaymentWithCreditCard", "PayPal",FormMethod.Post))
+{
+<div>
+    <table>
+        <tr>
+            <td>
+                Product Name:
+            </td>
+            <td>
+                @*<input type="text" name="product" value="Visual Studio 2013" readonly />*@
+                @*<label id="lbl" class="label">Window Licence</label>*@
+                @Html.Label(Model.name)
+                @Html.HiddenFor(x=>x.name)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Quantity:
+            </td>
+            <td>
+                @Html.TextBoxFor(x=>x.quantity,new {id="itemQty", onchange="QuantityChange()"}) 
+                @*<input type="text" name="txtQty" value="" />*@
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Cost:
+            </td>
+            <td>
+                @Html.TextBoxFor(x => x.price, new { id= "itemPrice"})
+                
+                @*<input type="text" name="txtCost" value="50" />*@
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Total Price:
+            </td>
+            <td>
+                @Html.TextBoxFor(x => x.totalPrice,new { id="itemsTotalPrice"})
+                
+                @*<input type="text" name="txtTotalPrice" value="" />*@
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" id="btnCheckOut" name="btnCheckOut" value="Check Out with Paypal" />
+            </td>
+        </tr>
+    </table>
+</div>
+}
+<script>
+
+    $(document).ready(function () {
+        //$('#QuantityChange').change(function () {
+        //});
+    });
+
+    function QuantityChange()
+    {
+        debugger;
+        $('#itemsTotalPrice').val($('#itemQty').val() * $('#itemPrice').val());
+    }
+</script>
